@@ -17,7 +17,7 @@ To address these limitations, we propose MABEV (Motion-Aware BEVFormer) — a li
 ##  Overview
  Overview of MABEV Encoder with Motion-Aware Query Fusion
 
-![MABEV_Overview](https://github.com/user-attachments/assets/13130768-ffba-408d-8f52-7ebf107f9281)
+![MABEV_Overview](figs/MABEV_Overview.png "model overview")
 
 Our proposed MABEV enhances the BEVFormer encoder by introducing a motion-aware delta attention module. Given multi-view image features and a historical BEV query, we first apply temporal self-attention to align the past BEV features with the current frame. The aligned previous BEV query is then compared to the current BEV query to compute a delta query, representing motion-induced differences. This delta query is fused with the current query via an MLP-based fusion module to generate a motion-aware query, which is subsequently refined through motion-aware attention. This three-stage attention pipeline — temporal → spatial → motion-aware — effectively improves the perception of dynamic objects while maintaining compatibility with the original BEVFormer framework.
 
