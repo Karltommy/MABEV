@@ -49,17 +49,17 @@ python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 ```
 
 
-**g. Clone BEVFormer.**
+**g. Clone MABEVFormer.**
 ```
-git clone https://github.com/fundamentalvision/BEVFormer.git
+https://github.com/Karltommy/MABEV.git
 ```
 
 **h. Prepare pretrained models.**
 ```shell
-cd bevformer
+cd mabevformer
 mkdir ckpts
 
-cd ckpts & wget https://github.com/zhiqi-li/storage/releases/download/v1.0/r101_dcn_fcos3d_pretrain.pth
+cd ckpts & wget https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.pth
 ```
 
-note: this pretrained model is the same model used in [detr3d](https://github.com/WangYueFt/detr3d)
+note: this pretrained model is the [bevformer_tiny_epoch_24](https://github.com/zhiqi-li/storage/releases/download/v1.0/bevformer_tiny_epoch_24.pth) model in [BEVFormer](https://github.com/fundamentalvision/BEVFormer)
