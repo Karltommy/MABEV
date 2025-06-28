@@ -46,10 +46,13 @@ Our proposed MABEV enhances the BEVFormer encoder by introducing a motion-aware 
 
 -  Performance on NuScenes Full
   
-| Model | mAP	| mATE	| mASE	| mAOE |
-| :---: | :---: | :---: | :---: | :---: |
-| BEVFormer|Coming Soon|/|/|/|
-| MABEV (Ours)|Coming Soon|/|/|/|
+| Method | Pretrain | Backbone | Lr Schd	| NDS	| mAP	| Config | Download |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| MABEV-tiny (Ours)|Tiny|R50|24ep|38.99|27.53|/|[model]/[log]|
+| Pretraned BEVFormer-tiny|/|R50|/|35.4|25.2|/|[model]/[log]|
+| BEVFormer-tiny|Tiny|R50|24ep|Coming soon|/|/|Coming soon|
+
+
 
 <!-- Our MABEV model shows consistent improvements across all metrics, especially in mAP (+%) and NDS (+%), demonstrating enhanced capability for dynamic object modeling.-->
 
