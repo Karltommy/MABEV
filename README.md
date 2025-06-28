@@ -11,7 +11,7 @@ To address these limitations, we propose MABEV (Motion-Aware BEVFormer) — a li
 
 ## Highlights
 -  Motion-aware delta query module to enhance dynamic object perception
--  Improved mAP on NuScenes
+-  Improved NDS and mAP on NuScenes
 -  Compatible with BEVFormer and MMDetection3D framework
 
 ##  Overview
@@ -33,11 +33,10 @@ Our proposed MABEV enhances the BEVFormer encoder by introducing a motion-aware 
 | Pretraned BEVFormer-tiny|/|R50|24ep|35.4|25.2|[bevformer_tiny.py(original)](https://github.com/fundamentalvision/BEVFormer/blob/master/projects/configs/bevformer/bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.log)|
 | BEVFormer-tiny|[pretraned_bevformer-tiny](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.pth)|R50|24ep|Coming soon|Coming soon|[bevformer_tiny.py](projects\configs\bevformer\bevformer_tiny.py)|Coming soon|
 
--  We compare our model against the official pretrained BEVFormer-Tiny model, which was trained for 24 epochs on the nuScenes full dataset and released by the original authors.
-Our method builds upon the same pretrained weights but introduces a modified architecture with motion-aware attention to enhance dynamic object perception.
-Despite sharing the same initialization, our model achieves +2.33% mAP and +3.59% NDS improvement over the baseline, demonstrating the effectiveness of the proposed modification.
-
--  For completeness, we plan to further report the validation performance of the original BEVFormer-Tiny model retrained under the same experimental settings (i.e., pretrained checkpoint, batch size, and training epochs) to ensure a fully fair comparison.
+- We compare our model with the official BEVFormer-Tiny pretrained model, which was trained for 24 epochs on the nuScenes full dataset.
+- Our model achieves +2.33% mAP and +3.59% NDS improvement, showing the effectiveness of the proposed modification.
+- Due to limited computing resources (single RTX 3090), we only conduct experiments on the Tiny version. Future work will extend to the Base model.
+- The consistent gain on the Tiny model already demonstrates the value of the added module. We will also report validation results of the original BEVFormer-Tiny retrained under the same settings for fair comparison.
 
 <!-- Our MABEV model shows consistent improvements across all metrics, especially in mAP (+%) and NDS (+%), demonstrating enhanced capability for dynamic object modeling.-->
 
