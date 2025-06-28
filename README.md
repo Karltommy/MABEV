@@ -48,9 +48,9 @@ Our proposed MABEV enhances the BEVFormer encoder by introducing a motion-aware 
   
 | Method | Pretrain | Backbone | Lr Schd	| NDS	| mAP	| Config | Download |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| MABEV-tiny (Ours)|Tiny|R50|24ep|38.99|27.53|/|[model]/[log]|
+| MABEV-tiny (Ours)|Tiny|R50|24ep|38.99|27.53|[ma_bevformer_tiny.py](projects\configs\bevformer\ma_bevformer_tiny.py)|[model]/[log]|
 | Pretraned BEVFormer-tiny|/|R50|/|35.4|25.2|/|[model]/[log]|
-| BEVFormer-tiny|Tiny|R50|24ep|Coming soon|/|/|Coming soon|
+| BEVFormer-tiny|Tiny|R50|24ep|Coming soon|Coming soon|[bevformer_tiny.py](projects\configs\bevformer\bevformer_tiny.py)|Coming soon|
 
 
 
