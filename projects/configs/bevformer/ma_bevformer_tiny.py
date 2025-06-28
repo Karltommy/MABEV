@@ -107,11 +107,16 @@ model = dict(
                                 num_points=8,
                                 num_levels=_num_levels_),
                             embed_dims=_dim_,
-                        )
+
+                        ),
+                        dict(
+                            type='DeltaFeatureAttention',
+                            embed_dims=_dim_,
+                            num_levels=1)
                     ],
                     feedforward_channels=_ffn_dim_,
                     ffn_dropout=0.1,
-                    operation_order=('self_attn', 'norm', 'cross_attn', 'norm',
+                    operation_order=('self_attn', 'norm', 'cross_attn', 'norm','delta_attn', 'norm',
                                      'ffn', 'norm'))),
             decoder=dict(
                 type='DetectionTransformerDecoder',
@@ -238,7 +243,7 @@ data = dict(
     shuffler_sampler=dict(type='DistributedGroupSampler'),
     nonshuffler_sampler=dict(type='DistributedSampler')
 )
-
+# lr=2e-4,
 optimizer = dict(
     type='AdamW',
     lr=1.5e-4,
@@ -254,10 +259,10 @@ lr_config = dict(
     policy='CosineAnnealing',
     warmup='linear',
     warmup_iters=500,
-    warmup_ratio=1.0 / 3,
+    warmup_ratio=1.0/3,
     min_lr_ratio=1e-3)
 total_epochs = 24
-# evaluation = dict(interval=1, pipeline=test_pipeline)
+#evaluation = dict(interval=1, pipeline=test_pipeline)
 
 runner = dict(type='EpochBasedRunner', max_epochs=total_epochs)
 
