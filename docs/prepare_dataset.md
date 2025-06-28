@@ -22,12 +22,12 @@ Using the above code will generate `nuscenes_infos_temporal_{train,val}.pkl`.
 
 **Folder structure**
 ```
-bevformer
+mabev
 ├── projects/
 ├── tools/
 ├── configs/
 ├── ckpts/
-│   ├── r101_dcn_fcos3d_pretrain.pth
+│   ├── bevformer_tiny_epoch_24.pth
 ├── data/
 │   ├── can_bus/
 │   ├── nuscenes/
