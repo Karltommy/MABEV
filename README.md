@@ -29,16 +29,14 @@ To address these limitations, we propose MABEV (Motion-Aware BEVFormer) — a li
 -  Hardware -- GPU: NVIDIA RTX 3090 (24GB)
 -  Performance on NuScenes Full
   
-| Method | Pretrain | Backbone | Lr Schd	| NDS	| mAP	| Config | Download |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| MABEV-tiny (Ours)|[pretraned_bevformer-tiny](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.pth)|R50|24ep|38.99|27.53|[ma_bevformer_tiny.py](projects\configs\bevformer\ma_bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.log)|
-| Pretraned BEVFormer-tiny|/|R50|24ep|35.4|25.2|[bevformer_tiny.py(original)](https://github.com/fundamentalvision/BEVFormer/blob/master/projects/configs/bevformer/bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.log)|
-| BEVFormer-tiny|[pretraned_bevformer-tiny](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/pre_bevformer_tiny_epoch_24.pth)|R50|24ep|Coming soon|Coming soon|[bevformer_tiny.py](projects\configs\bevformer\bevformer_tiny.py)|Coming soon|
+| Method | Backbone | Lr Schd	| NDS	| mAP	| Config | Download |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| MABEV-tiny (Ours)|R50|24ep|38.17|28.39[ma_bevformer_tiny.py](projects\configs\bevformer\ma_bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.log)|
+| BEVFormer-tiny|R50|24ep|37.91|27.72|[bevformer_tiny.py](projects\configs\bevformer\bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/bevformer_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/bevformer_tiny_epoch_24.log)|
 
-- We compare our model with the official BEVFormer-Tiny pretrained model, which was trained for 24 epochs on the nuScenes full dataset.
-- Our model achieves +2.33% mAP and +3.59% NDS improvement, showing the effectiveness of the proposed modification.
+- We compare our model with the official BEVFormer-Tiny, which were both trained under the same conditions for 24 epochs on the nuScenes full dataset without loading pretrained models.
+- Our model achieves +0.67% mAP and +0.26% NDS improvement, showing the effectiveness of the proposed modification.
 - Due to limited computing resources (single RTX 3090), we only conduct experiments on the Tiny version. Future work will extend to the Base model.
-- The consistent gain on the Tiny model already demonstrates the value of the added module. We will also report validation results of the original BEVFormer-Tiny retrained under the same settings for fair comparison.
 
 <!-- Our MABEV model shows consistent improvements across all metrics, especially in mAP (+%) and NDS (+%), demonstrating enhanced capability for dynamic object modeling.-->
 
