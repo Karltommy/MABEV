@@ -11,7 +11,7 @@ Train MABEVFormer with 4 GPUs
 
 Eval MABEVFormer with 4 GPUs
 ```
-./tools/dist_test.sh ./projects/configs/bevformer/ma_bevformer_base.py ./path/to/ckpts.pth 4
+./tools/dist_test.sh ./projects/configs/bevformer/ma_bevformer_tiny.py ./path/to/ckpts.pth 4
 ```
 
 
