@@ -177,7 +177,7 @@ model = dict(
 dataset_type = 'CustomNuScenesDataset'
 data_root = '/home/wenyan/data/data/nuscenes/'
 file_client_args = dict(backend='disk')
-load_from = '/home/wenyan/data/data/nuscenes/bevformer_tiny_epoch_24.pth'
+# load_from = '/home/wenyan/data/data/nuscenes/bevformer_tiny_epoch_24.pth'
 
 
 train_pipeline = [
@@ -243,7 +243,7 @@ data = dict(
     shuffler_sampler=dict(type='DistributedGroupSampler'),
     nonshuffler_sampler=dict(type='DistributedSampler')
 )
-# lr=2e-4,
+
 optimizer = dict(
     type='AdamW',
     lr=1.5e-4,
@@ -259,10 +259,10 @@ lr_config = dict(
     policy='CosineAnnealing',
     warmup='linear',
     warmup_iters=500,
-    warmup_ratio=1.0/3,
+    warmup_ratio=1.0 / 3,
     min_lr_ratio=1e-3)
 total_epochs = 24
-#evaluation = dict(interval=1, pipeline=test_pipeline)
+# evaluation = dict(interval=1, pipeline=test_pipeline)
 
 runner = dict(type='EpochBasedRunner', max_epochs=total_epochs)
 

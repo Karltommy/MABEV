@@ -172,7 +172,7 @@ model = dict(
 dataset_type = 'CustomNuScenesDataset'
 data_root = '/home/wenyan/data/data/nuscenes/'
 file_client_args = dict(backend='disk')
-load_from = '/home/wenyan/data/data/nuscenes/bevformer_tiny_epoch_24.pth'
+# load_from = '/home/wenyan/data/data/nuscenes/bevformer_tiny_epoch_24.pth'
 
 
 train_pipeline = [
