@@ -31,8 +31,8 @@ To address these limitations, we propose MABEV (Motion-Aware BEVFormer) — a li
   
 | Method | Backbone | Lr Schd	| NDS	| mAP	| Config | Download |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| MABEV-tiny (Ours)|R50|24ep|38.17|28.39|[ma_bevformer_tiny.py](projects\configs\bevformer\ma_bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.log)|
-| BEVFormer-tiny|R50|24ep|37.91|27.72|[bevformer_tiny.py](projects\configs\bevformer\bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/bevformer_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/bevformer_tiny_epoch_24.log)|
+| MABEV-tiny (Ours)|R50|24ep|38.17|28.39|[ma_bevformer_tiny.py](projects/configs/bevformer/ma_bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/mabev_tiny_epoch_24.log)|
+| BEVFormer-tiny|R50|24ep|37.91|27.72|[bevformer_tiny.py](/projects/configs/bevformer/bevformer_tiny.py)|[model](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/bevformer_tiny_epoch_24.pth)/[log](https://github.com/Karltommy/MABEV_FILE/releases/download/V1.0.0/bevformer_tiny_epoch_24.log)|
 
 - We compare our model with the official BEVFormer-Tiny, which were both trained under the same conditions for 24 epochs on the nuScenes full dataset without loading pretrained models.
 - Our model achieves +0.67% mAP and +0.26% NDS improvement, showing the effectiveness of the proposed modification.
