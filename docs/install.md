@@ -54,7 +54,7 @@ python -m pip install 'git+https://github.com/facebookresearch/detectron2.git'
 https://github.com/Karltommy/MABEV.git
 ```
 
-**h. Prepare pretrained models.**
+**h. Prepare pretrained models (if needed).**
 ```shell
 cd mabevformer
 mkdir ckpts
