@@ -357,6 +357,10 @@ class BEVFormerLayer(MyCustomBaseTransformerLayer):
             # temporal self attention
             if layer == 'self_attn':
 
+                if prev_bev is not None:
+                    query_aligned = prev_bev[0].unsqueeze(0).clone()
+                else:
+                    query_aligned = None
                 query = self.attentions[attn_index](
                     query,
                     prev_bev,
@@ -371,7 +375,8 @@ class BEVFormerLayer(MyCustomBaseTransformerLayer):
                         [[bev_h, bev_w]], device=query.device),
                     level_start_index=torch.tensor([0], device=query.device),
                     **kwargs)
-                query_aligned = query.clone()
+                if query_aligned is None:
+                    query_aligned = query.clone()
                 attn_index += 1
                 identity = query
 

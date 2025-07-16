@@ -55,6 +55,7 @@ class DeltaFeatureAttention(BaseModule):
         # self.prev_project = nn.Linear(embed_dims*2, embed_dims)
         self.cur_project = nn.Linear(embed_dims*2, embed_dims)
         self.output_project = nn.Linear(embed_dims, embed_dims)
+        self.gate_proj = nn.Linear(embed_dims * 2, embed_dims)
 
 
 
@@ -89,22 +90,24 @@ class DeltaFeatureAttention(BaseModule):
         #     return query
         bs, num_query, embed_dims = query.shape
         delta_query = query - prev_query
+        # delta_query = delta_query / math.sqrt(embed_dims)
         delta_feat = self.delta_mlp(delta_query)
         # prev_delta_query = torch.cat([prev_query, delta_feat], dim=-1)
-        cur_delta_query = torch.cat([query, delta_feat], dim=-1)
+        cur_delta_query = torch.cat([query, delta_query], dim=-1)
         # prev_feat = self.prev_project(prev_delta_query)
         # gate = torch.sigmoid(self.cur_project(cur_delta_query))
         cur_feat = self.cur_project(cur_delta_query)
         # mix_delta_query = torch.cat([prev_feat, cur_feat], dim=-1)
         # value = self.mix_project(mix_delta_query)
-        value = query
+        # value = query
+        value = cur_feat
         _, num_value, _ = value.shape
         value = value.reshape(bs ,
                               num_value, self.num_heads, -1)
-        sampling_offsets = self.sampling_offsets(cur_feat)
+        sampling_offsets = self.sampling_offsets(delta_feat)
         sampling_offsets = sampling_offsets.view(
             bs, num_query, self.num_heads, self.num_levels, self.num_points, 2).contiguous()
-        attention_weights = self.attention_weights(cur_feat).view(
+        attention_weights = self.attention_weights(delta_feat).view(
             bs, num_query, self.num_heads, self.num_levels * self.num_points)
         attention_weights = attention_weights.softmax(-1)
 
@@ -142,7 +145,13 @@ class DeltaFeatureAttention(BaseModule):
 
             output = multi_scale_deformable_attn_pytorch(
                 value, spatial_shapes, sampling_locations, attention_weights)
-        output = output.permute(1, 2, 0)
+        motion_feat = output
+        # cur_delta_query = torch.cat([query, motion_feat], dim=-1)
+        # output = self.cur_project(cur_delta_query).permute(1, 2, 0)
+        gate = torch.sigmoid(self.gate_proj(torch.cat([query, motion_feat], dim=-1)))
+        final_output = gate * query + (1 - gate) * motion_feat
+        output = final_output.permute(1, 2, 0)
+
 
         # fuse history value and current value
         # (num_query, embed_dims, bs*num_bev_queue)-> (num_query, embed_dims, bs, num_bev_queue)
